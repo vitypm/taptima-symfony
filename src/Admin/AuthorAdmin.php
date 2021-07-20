@@ -26,7 +26,7 @@ final class AuthorAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list): void
     {
         $list
-            ->add('id')
+           ->add('id')
             ->add('name')
             ->add('surname')
             ->add('books')
@@ -42,7 +42,7 @@ final class AuthorAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
-            ->add('id')
+       //     ->add('id')
             ->add('name')
             ->add('surname')
             ->add('books')
