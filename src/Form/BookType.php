@@ -43,7 +43,7 @@ class BookType extends AbstractType
                     ])
                 ],
             ])
-            ->add('auhors')
+            ->add('authors')
         ;
     }
 

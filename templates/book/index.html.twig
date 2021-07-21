@@ -26,9 +26,9 @@
                 <td>{{ book.description }}</td>
                 <td>{{ book.publication ? book.publication|date('Y-m-d') : '' }}</td>
                 <td>
-                    {% for auhor in book.auhors %}
+                    {% for author in book.authors %}
                         <ul>
-                            <li>{{ auhor.name }} {{ auhor.surname }}</li>
+                            <li>{{ author.name }} {{ author.surname }}</li>
                         </ul>
                     {% endfor %}
                 </td>

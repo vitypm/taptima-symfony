@@ -26,7 +26,7 @@ final class BookAdmin extends AbstractAdmin
             ->add('description')
             ->add('publication')
             ->add('brochureFilename')
-            ->add('auhors')
+            ->add('authors')
             ;
     }
 
@@ -38,7 +38,7 @@ final class BookAdmin extends AbstractAdmin
             ->add('description')
             ->add('publication')
             ->add('brochureFilename')
-            ->add('auhors'
+            ->add('authors'
 
             )
             ->add(ListMapper::NAME_ACTIONS, null, [
@@ -71,7 +71,7 @@ final class BookAdmin extends AbstractAdmin
             ->add('title')
             ->add('description')
             ->add('publication')
-            ->add('auhors')
+            ->add('authors')
             ->add('brochureFilename',FileType::class, [
                 'label' => 'Brochure (PDF file, png)',
 
@@ -108,7 +108,7 @@ final class BookAdmin extends AbstractAdmin
             ->add('title')
             ->add('description')
             ->add('publication')
-            ->add('auhors')
+            ->add('authors')
             ->add('brochureFilename')
             ;
     }

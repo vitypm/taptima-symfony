@@ -81,17 +81,10 @@ final class BookAdminController extends CRUDController
             if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
                 /** @phpstan-var T $submittedObject */
                 $brochureFile = $form->get('brochureFilename')->getData();
-
-
                 if ($brochureFile) {
-
                     $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
                     echo $originalFilename;
-
-
                     $newFilename = $originalFilename . '.' . $brochureFile->guessExtension();
-
-
                     try {
                         $brochureFile->move(
                             $this->getParameter('brochures_directory'),
@@ -100,13 +93,8 @@ final class BookAdminController extends CRUDController
                     } catch (FileException $e) {
 
                     }
-
-
                     $newObject->setBrochureFilename($newFilename);
-
                 }
-
-
                 $submittedObject = $form->getData();
                 $this->admin->setSubject($submittedObject);
                 $this->admin->checkAccess('create', $submittedObject);
@@ -126,7 +114,6 @@ final class BookAdminController extends CRUDController
                             'SonataAdminBundle'
                         )
                     );
-
                     // redirect to edit mode
                     return $this->redirectToRoute('admin_app_book_list', []);
                     //  return $this->redirectTo($newObject);
@@ -142,7 +129,6 @@ final class BookAdminController extends CRUDController
                 if ($this->isXmlHttpRequest() && null !== ($response = $this->handleXmlHttpRequestErrorResponse($request, $form))) {
                     return $response;
                 }
-
                 $this->addFlash(
                     'sonata_flash_error',
                     $this->trans(

@@ -27,7 +27,7 @@ class Book
     /**
      * @ORM\ManyToMany(targetEntity=Author::class, inversedBy="books")
      */
-    private $auhors;
+    private $authors;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -46,7 +46,7 @@ class Book
 
     public function __construct()
     {
-        $this->auhors = new ArrayCollection();
+        $this->authors = new ArrayCollection();
     }
 
 
@@ -64,31 +64,28 @@ class Book
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
 
     /**
      * @return Collection|Author[]
      */
-    public function getAuhors(): Collection
+    public function getAuthors(): Collection
     {
-        return $this->auhors;
+        return $this->authors;
     }
 
-    public function addAuhor(Author $auhor): self
+    public function addAuthor(Author $author): self
     {
-        if (!$this->auhors->contains($auhor)) {
-            $this->auhors[] = $auhor;
+        if (!$this->authors->contains($author)) {
+            $this->authors[] = $author;
         }
-
         return $this;
     }
 
-    public function removeAuhor(Author $auhor): self
+    public function removeAuthor(Author $author): self
     {
-        $this->auhors->removeElement($auhor);
-
+        $this->authors->removeElement($author);
         return $this;
     }
 
@@ -124,7 +121,6 @@ class Book
     public function setBrochureFilename(string $brochureFilename): self
     {
         $this->brochureFilename = $brochureFilename;
-
         return $this;
     }
     public function __toString() {
