@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book index{% endblock %}
+
+{% block body %}
+    <h1>Book index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Публикация</th>
+                <th>Авторы</th>
+                <th>Предосмотр</th>
+                <th>Путь к файлу</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.description }}</td>
+                <td>{{ book.publication ? book.publication|date('Y-m-d') : '' }}</td>
+                <td>
+                    {% for auhor in book.auhors %}
+                        <ul>
+                            <li>{{ auhor.name }} {{ auhor.surname }}</li>
+                        </ul>
+                    {% endfor %}
+                </td>
+                <td><object
+                            data= "{{ asset('uploads/brochures/' ~ book.brochureFilename) }}"
+                            width="250"
+                            height="200">
+                    </object></td>
+                <td>{{ book.brochureFilename }}</td>
+                <td>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">show</a>
+                    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_new') }}">Create new</a>
+{% endblock %}
